@@ -1,5 +1,5 @@
 # ==========================================
-# Custom theme: dark-red
+# Custom theme: blackarch
 # ==========================================
 
 # Prompt configuration (input line)
@@ -7,12 +7,12 @@ get_path() {
      if [[ "$PWD" == "$HOME" ]]; then
          echo ""
      else
-         echo "%F{248}%1d "  # Light gray for current directory name
+         echo "%F{248}%1d "
      fi
 }
 PROMPT='$(get_path)%F{244}▶ %f'  # Gray prompt symbol
 
-# Colors for `ls` utility (gray folders, red executables)
+# Colors for `ls` utility
 export LS_COLORS="di=38;5;244:ex=38;5;160:ln=38;5;242:fi=00"  # Gray:244, Red:160, Dim-gray:242
 alias ls='ls --color=auto'
 
@@ -21,36 +21,36 @@ alias ls='ls --color=auto'
 _apply_syntax_colors() {
     if (( $+ZEBRA_STRIPES || $+ZSH_HIGHLIGHT_STYLES )); then
 
-        # Commands, aliases, functions (light gray)
+        # Commands, aliases, functions
         ZSH_HIGHLIGHT_STYLES[command]='fg=248,bold'
         ZSH_HIGHLIGHT_STYLES[builtin]='fg=248,bold'
         ZSH_HIGHLIGHT_STYLES[alias]='fg=248,bold'
         ZSH_HIGHLIGHT_STYLES[function]='fg=248,bold'
 
-        # Errors (bright red)
+        # Errors or unknown commands
         ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=160,bold'
 
-        # Options (dim gray)
+        # Options
         ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=242'
         ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=242'
 
-        # Paths (gray with underline)
+        # Paths
         ZSH_HIGHLIGHT_STYLES[path]='fg=244,underline'
 
-        # TEXT IN QUOTES (Disable default argument colors)
-        ZSH_HIGHLIGHT_STYLES[string]='fg=243'  # Medium gray
+        # TEXT IN QUOTES
+        ZSH_HIGHLIGHT_STYLES[string]='fg=243'
         ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=243,none'
         ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=243,none'
 
-        # Variables like $HOME (light gray to stand out)
+        # Variables like $HOME
         ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=251'
         ZSH_HIGHLIGHT_STYLES[environment-variable]='fg=251'
         ZSH_HIGHLIGHT_STYLES[assign]='fg=251'
 
-        # Operators, pipes and arrows (&&, |, >) (dark red accent)
+        # Operators, pipes and arrows (&&, |, >)
         ZSH_HIGHLIGHT_STYLES[redirection]='fg=124,bold'  # Dark red
 
-        # Comments (very dark gray, non-distracting)
+        # Comments
         ZSH_HIGHLIGHT_STYLES[comment]='fg=238,italic'  # Dark gray
 
         # Filenames that appear AFTER redirection arrows (e.g., file.txt)
