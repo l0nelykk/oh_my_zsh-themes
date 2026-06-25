@@ -71,3 +71,4 @@ add-zsh-hook precmd _apply_syntax_colors
 # Run Fastfetch when terminal opens (Display Gentoo logo with left padding)
 clear
 fastfetch --logo gentoo --logo-padding-left 9
+echo 
